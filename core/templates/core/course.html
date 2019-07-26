@@ -1,14 +1,59 @@
 {% extends "core/base.html" %}
 {% block content %}
-    <ul>
-      <h1>{{ topic }}</h1>
+<!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
 
-        {% for item in items  %}
-            <li> {{ item.author }} </li>
-        <img src="/media/{{ item.video }}" alt="NOT FOUND">
-        {% endfor %}
+      <!-- Portfolio Section Heading -->
+      <h2 class="page-section-heading text-center  text-secondary mb-0"> {{ topic_name }} Courses </h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Portfolio Grid Items -->
+      <div class="row">
 
 
-    </ul>
+
+
+
+{%for item in items %}
+        <!-- Portfolio Item 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+
+              <video  style="width:100%;height:auto" controls>
+                <source src="/media/{{ item.video }}" type="video/mpg">
+                <source src="/media/{{ item.video }}" type="video/mpeg">
+                <source src="/media/{{ item.video }}" type="video/mp4">
+                <source src="/media/{{ item.video }}" type="video/swf">
+                <source src="/media/{{ item.video }}" type="video/wmv">
+            </video>
+
+             <a class="col-sm-6" href="/media/{{ item.video }}"> {{ item.video }} </a>
+          </div>
+        </div>
+
+
+
+
+{% endfor %}
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+  </section>
 
 {% endblock %}

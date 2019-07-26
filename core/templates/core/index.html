@@ -41,22 +41,10 @@
         {% for item in items %}
         <div class="col-md-6 col-lg-4">
           <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white">
-                <a class="portfolio-item-caption-content text-center text-white" href="{{ item.link }}">
-                <i class="fas fa-plus fa-3x">{{ item.topic }}</i>
-                </a>
-              </div>
-            </div>
-            {% if item.img.url %}
-              <img class="img-fluid" src="{{  item.img.url  }} " alt="NOT FOUND">
-            {% else %}
-              <img class="img-fluid" src="/static/img/protofolio/cabin.png" alt="NOT FOUND">
-            {% endif %}
-
+              <img class="img-fluid" src="/media/{{  item.video  }} " alt="NOT FOUND">
           </div>
         </div>
-            {% endfor %}
+          {% endfor %}
 
       </div>
       <!-- /.row -->

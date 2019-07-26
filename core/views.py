@@ -15,11 +15,9 @@ def index(request):
 
 def course(request,topic_name):
     items =  Course.objects.filter(topic__name=topic_name)
-    for item in items:
-        print(item)
     context = {
         'items': items ,
-        'topic': topic_name ,
+        'topic_name': topic_name ,
 
 
                 }

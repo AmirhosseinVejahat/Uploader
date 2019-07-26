@@ -19,5 +19,4 @@ class TopicsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Course, ItemAdmin)
-admin.site.register(Token)
 admin.site.register(Topics,TopicsAdmin)
