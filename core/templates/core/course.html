@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+{% block content %}
+    <ul>
+      <h1>{{ topic }}</h1>
+
+        {% for item in items  %}
+            <li> {{ item.author }} </li>
+        <img src="/media/{{ item.video }}" alt="NOT FOUND">
+        {% endfor %}
+
+
+    </ul>
+
+{% endblock %}

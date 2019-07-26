@@ -1,0 +1,67 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+  <!-- Masthead -->
+
+        <!-- Masthead Avatar Image -->
+
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <!-- <i class="fas fa-star"></i> -->
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Masthead Subheading -->
+      <p class="masthead-subheading font-weight-light mb-0">Learn Now !</p>
+
+
+
+  <!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+      <!-- Portfolio Section Heading -->
+      <h2 class="page-section-heading text-center  mb-0">Movies</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <!-- <i class="fas fa-star"></i> -->
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+        <div class="row">
+      <!-- Portfolio Grid Items -->
+
+
+        {% for item in items %}
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <a class="portfolio-item-caption-content text-center text-white" href="{{ item.link }}">
+                <i class="fas fa-plus fa-3x">{{ item.topic }}</i>
+                </a>
+              </div>
+            </div>
+            {% if item.img.url %}
+              <img class="img-fluid" src="{{  item.img.url  }} " alt="NOT FOUND">
+            {% else %}
+              <img class="img-fluid" src="/static/img/protofolio/cabin.png" alt="NOT FOUND">
+            {% endif %}
+
+          </div>
+        </div>
+            {% endfor %}
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+  </section>
+
+{% endblock content %}

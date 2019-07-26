@@ -5,7 +5,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Movie
+from .models import *
 
 
 class ItemAdmin(admin.ModelAdmin):
@@ -14,4 +14,10 @@ class ItemAdmin(admin.ModelAdmin):
     list_filter = ['topic']
 
 
-admin.site.register(Movie, ItemAdmin)
+class TopicsAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+
+admin.site.register(Course, ItemAdmin)
+admin.site.register(Token)
+admin.site.register(Topics,TopicsAdmin)
