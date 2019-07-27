@@ -2,29 +2,42 @@
 
 {% block content %}
   <!-- Masthead -->
-
+<img class="masthead-avatar mb-5" src="/static/img/portfolio/avataaars.svg" alt="Parspooyesh Fanavar Logo">
         <!-- Masthead Avatar Image -->
 
       <!-- Icon Divider -->
       <div class="divider-custom divider-light">
         <div class="divider-custom-line"></div>
         <div class="divider-custom-icon">
-          <!-- <i class="fas fa-star"></i> -->
+          <i class="fas fa-star">Welcome</i>
         </div>
         <div class="divider-custom-line"></div>
       </div>
 
       <!-- Masthead Subheading -->
-      <p class="masthead-subheading font-weight-light mb-0">Learn Now !</p>
+      <p class="masthead-subheading font-weight-light mb-0">
+        About Me !
+      </p>
+      <p class="masthead-subheading font-weight-light mb-0">
+        I am a simple django web application that you can use it for sharing your video with your friends
+      </p>
+      <p class="masthead-subheading font-weight-light mb-0">
+         I hope it will be useful for you
+      </p>
+      <p class="masthead-subheading font-weight-light mb-0">
+        Also if you want join to me and contribute please see this link
+        <a class="text-white" href="http://github.com/AmirhosseinVejahat">"Github"</a>
+        and push your code
+      </p>
+
+
+
 
 
 
   <!-- Portfolio Section -->
   <section class="page-section portfolio" id="portfolio">
     <div class="container">
-
-      <!-- Portfolio Section Heading -->
-      <h2 class="page-section-heading text-center  mb-0">Movies</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom divider-light">
@@ -37,14 +50,6 @@
         <div class="row">
       <!-- Portfolio Grid Items -->
 
-
-        {% for item in items %}
-        <div class="col-md-6 col-lg-4">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-              <img class="img-fluid" src="/media/{{  item.video  }} " alt="NOT FOUND">
-          </div>
-        </div>
-          {% endfor %}
 
       </div>
       <!-- /.row -->
