@@ -15,6 +15,17 @@ class Department(models.Model):
     pass
 
 
+class Token(models.Model):
+
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    token = models.CharField(max_length=24)
+
+    def __unicode__(self):
+
+        return "{} _ token".format(self.user)
+
+
+
 class Course(models.Model):
 
     topic = models.ForeignKey(Topics)
