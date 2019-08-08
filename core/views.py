@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render , get_object_or_404
 from django.core.files.storage import FileSystemStorage
 from django.http import JsonResponse
 from json import JSONEncoder
 from django.views.decorators.csrf import csrf_exempt
 from core.models import *
 from django.utils.crypto import get_random_string
-from django.contrib.auth.hashers import check_password
+from django.views.decorators.http import require_POST
 
 def index(request):
     items = Course.objects.all()
@@ -34,6 +34,7 @@ def getUserInfo(request):
 
 
 @csrf_exempt
+@require_POST
 def reset_token(request):
     context = {}
 

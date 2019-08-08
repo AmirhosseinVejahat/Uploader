@@ -4,9 +4,14 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 # Register your models here.
+from . import models
 
-from .models import *
 from datetime import date
+
+def make_published(modeladmin,request,queryset):
+    queryset.update(status='i')
+
+make_published.short_description = "Mark as Published"
 
 class YearListFilter(admin.SimpleListFilter):
     title =  'year created'
@@ -26,23 +31,28 @@ class YearListFilter(admin.SimpleListFilter):
             return queryset.filter(created_at__gte=date(2016,1,1),
                                    created_at__lte=date(2016,12,31))
 
+class CourseInline(admin.TabularInline):
+    model = models.User
 
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ['topic', 'author', 'duration', 'level']
+    #inlines = [CourseInline,]
+    list_display = ['topic', 'author', 'duration', 'level','status']
     fields = ['topic', 'author', 'video', 'duration', 'level', 'description']
     search_fields = ['topic','author']
     sortable_by = ['duration']
     list_filter = ['topic',YearListFilter]
-    list_editable = ['author']
-
-
+    list_editable = ['status']
+    #radio_fields = {'topic':admin.HORIZONTAL}
+    actions = [make_published]
 
 class TopicsAdmin(admin.ModelAdmin):
     list_display = ['name']
     #list_filter = ['created_at','is_alive']
 
+class TokenAdmin(admin.ModelAdmin):
+    list_display = ['user','token']
 
-admin.site.register(Course, CourseAdmin,)
-admin.site.register(Topics,TopicsAdmin)
-admin.site.register(Token)
+admin.site.register(models.Course, CourseAdmin,)
+admin.site.register(models.Topics,TopicsAdmin)
+admin.site.register(models.Token,TokenAdmin)
