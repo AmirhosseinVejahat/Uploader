@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <p> Please Upload Your Files</p>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form }}
+
+<!--    <input type="file" name="upload_file" class="btn btn-primary">-->
+  <button type="submit">Submit</button>
+
+</form>
+{% if uploaded_file %}
+<p>Sucesssfull Uploaded</p>
+{% endif %}
+
+{% endblock content %}

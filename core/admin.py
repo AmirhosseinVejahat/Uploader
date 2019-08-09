@@ -11,10 +11,12 @@ from datetime import date
 def make_published(modeladmin,request,queryset):
     queryset.update(status='i')
 
+
 make_published.short_description = "Mark as Published"
 
+
 class YearListFilter(admin.SimpleListFilter):
-    title =  'year created'
+    title = 'year created'
     parameter_name = 'year'
 
     def lookups(self, request, model_admin):
@@ -23,6 +25,7 @@ class YearListFilter(admin.SimpleListFilter):
             ('2016','2016'),
 
         )
+
     def queryset(self, request, queryset):
         if self.value() == '2015':
             return queryset.filter(created_at__gte=date(2015,1,1),
@@ -31,28 +34,25 @@ class YearListFilter(admin.SimpleListFilter):
             return queryset.filter(created_at__gte=date(2016,1,1),
                                    created_at__lte=date(2016,12,31))
 
-class CourseInline(admin.TabularInline):
-    model = models.User
-
 
 class CourseAdmin(admin.ModelAdmin):
-    #inlines = [CourseInline,]
-    list_display = ['topic', 'author', 'duration', 'level','status']
+    list_display = ['topic', 'author', 'duration', 'level', 'status']
     fields = ['topic', 'author', 'video', 'duration', 'level', 'description']
-    search_fields = ['topic','author']
+    search_fields = ['topic', 'author']
     sortable_by = ['duration']
-    list_filter = ['topic',YearListFilter]
+    list_filter = ['topic', YearListFilter]
     list_editable = ['status']
-    #radio_fields = {'topic':admin.HORIZONTAL}
     actions = [make_published]
+
 
 class TopicsAdmin(admin.ModelAdmin):
     list_display = ['name']
-    #list_filter = ['created_at','is_alive']
+
 
 class TokenAdmin(admin.ModelAdmin):
-    list_display = ['user','token']
+    list_display = ['user', 'token']
 
-admin.site.register(models.Course, CourseAdmin,)
-admin.site.register(models.Topics,TopicsAdmin)
-admin.site.register(models.Token,TokenAdmin)
+
+admin.site.register(models.Course, CourseAdmin)
+admin.site.register(models.Topics, TopicsAdmin)
+admin.site.register(models.Token, TokenAdmin)

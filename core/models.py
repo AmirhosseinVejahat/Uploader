@@ -13,20 +13,21 @@ STATUS_CHOICES = (
 )
 
 
-
-
 class Topics(models.Model):
+    
+    objects = None
     name = models.CharField(max_length=255, null=True, blank=False)
 
     def __unicode__(self):
         return self.name
+
 
 class Department(models.Model):
     pass
 
 
 class Token(models.Model):
-
+    objects = None
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     token = models.CharField(max_length=24)
 
@@ -35,9 +36,8 @@ class Token(models.Model):
         return "{} _ token".format(self.user)
 
 
-
 class Course(models.Model):
-
+    objects = None
     topic = models.ForeignKey(Topics)
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     duration = models.DurationField(null=True, blank=True)
